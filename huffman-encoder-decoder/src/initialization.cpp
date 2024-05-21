@@ -31,10 +31,27 @@ Status initialization() {
 		charset[c] = w;
 	}
 
-	// TODO: 建立哈夫曼树
+	// 建立哈夫曼树
+	if (createHuffmanTree(n, charset)) {
+		cout << "已建立哈夫曼树。" << endl;
+	}
+	else {
+		cerr << "发生错误：无法建立哈夫曼树。" << endl;
+		system("pause");
+		return ERROR;
+	}
+	if (generateHuffmanCode()) {
+		cout << "已生成哈夫曼编码。" << endl;
+	}
+	else {
+		cerr << "发生错误：无法生成哈夫曼编码。" << endl;
+		system("pause");
+		return ERROR;
+	}
 
 	// 写入文件
-	for (const auto& i : charset) {
+	map<char, string> code = getHuffmanCode();
+	for (const auto i : code) {
 		fout << i.first << " " << i.second << endl;
 	}
 	fout.close();

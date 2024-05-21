@@ -1,15 +1,18 @@
-#pragma once
+﻿#pragma once
 #ifndef MAIN_H
 #define MAIN_H
- 
+
 #include <algorithm>
 #include <cstdlib>
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #include <map>
+#include <queue>
+
+#include "huffman_tree.h"
+
 using namespace std;
 using Status = int;
-using ElemType = int;
 
 const int N = 1e6 + 7;
 const int TRUE = 1;
@@ -25,6 +28,9 @@ Status decoding();
 Status print();
 Status treePrint();
 Status home();
- 
-#endif
 
+HuffmanTree getHuffmanTree();
+Status createHuffmanTree(int n, map<char, int> charset);
+Status generateHuffmanCode();
+map<char, string> getHuffmanCode();
+#endif

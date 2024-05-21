@@ -36,9 +36,15 @@
     <ClCompile Include="src\home.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\huffman_tree.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\main.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\huffman_tree.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
