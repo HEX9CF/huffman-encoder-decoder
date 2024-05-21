@@ -19,7 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\decoding.cpp" />
+    <ClCompile Include="src\encoding.cpp" />
+    <ClCompile Include="src\home.cpp" />
+    <ClCompile Include="src\initialization.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\print.cpp" />
+    <ClCompile Include="src\tree_print.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\main.h" />
