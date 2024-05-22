@@ -31,6 +31,5 @@ Status home();
 
 HuffmanTree getHuffmanTree();
 Status createHuffmanTree(int n, map<char, int> charset);
-Status generateHuffmanCode();
-map<char, string> getHuffmanCode();
+map<char, string> *getHuffmanCode();
 #endif

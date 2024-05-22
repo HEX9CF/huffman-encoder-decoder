@@ -2,14 +2,8 @@
 
 static HuffmanTree huffmanTree;
 static map<char, string> huffmanCode;
-
-HuffmanTree getHuffmanTree() {
-	return huffmanTree;
-}
-
-map<char, string> getHuffmanCode() {
-	return huffmanCode;
-}
+static bool treeExist = false;
+static bool codeExist = false;
 
 // 创建树节点
 TreeNode *createTreeNode(char e, TreeNode *l, TreeNode *r) {
@@ -43,6 +37,7 @@ Status createHuffmanTree(int n, map<char, int> charset) {
 		hmin.push({a.f + b.f, t});
 	}
 	 huffmanTree = hmin.top().node;
+	 treeExist = true;
 	 return OK;
 }
 
@@ -62,6 +57,79 @@ void preorder(HuffmanTree T, string c) {
 // 生成哈夫曼编码
 Status generateHuffmanCode() {
 	preorder(huffmanTree, "");
+	codeExist = true;
 	return OK;
+}
+
+// 读取哈夫曼编码
+Status readHuffmanCode() {
+	char c;
+	string s;
+	ifstream fin;
+
+	fin.open("hfmTree", ios::in);
+	if (!fin) {
+		cerr << "发生错误：无法打开文件 hfmTree 。" << endl;
+		system("pause");
+		return ERROR;
+	}
+
+	while(fin >> c >> s) {
+		huffmanCode[c] = s;
+	}
+	codeExist = true;
+	return OK;
+}
+
+// 根据哈夫曼编码建立哈夫曼树
+Status createTreeByCode() {
+	TreeNode* p;
+
+	huffmanTree = createTreeNode(' ', nullptr, nullptr);
+	p = huffmanTree;
+	for (const auto i : huffmanCode) {
+		for (const auto j : i.second) {
+			if (j == '0') {
+				if (!p->left) {
+					p->left = createTreeNode(' ', nullptr, nullptr);
+				}
+				p = p->left;
+			}
+			else {
+				if (!p->right) {
+					p->right = createTreeNode(' ', nullptr, nullptr);
+				}
+				p = p->right;
+			}
+		}
+		p->data = i.first;
+	}
+	treeExist = true;
+	return OK;
+}
+
+HuffmanTree getHuffmanTree() {
+	if (!treeExist) {
+		if (codeExist) {
+			createTreeByCode();
+		}
+		else {
+			readHuffmanCode();
+			createTreeByCode();
+		}
+	}
+	return huffmanTree;
+}
+
+map<char, string>* getHuffmanCode() {
+	if(!codeExist) {
+		if (treeExist) {
+			generateHuffmanCode();
+		}
+		else {
+			readHuffmanCode();
+		}
+	}
+	return &huffmanCode;
 }
 
