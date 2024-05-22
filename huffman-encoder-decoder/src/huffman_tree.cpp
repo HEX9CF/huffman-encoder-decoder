@@ -61,7 +61,7 @@ Status generateHuffmanCode() {
 	return OK;
 }
 
-// 读取哈夫曼编码
+// 从文件读取哈夫曼编码
 Status readHuffmanCode() {
 	char c;
 	string s;
@@ -86,8 +86,8 @@ Status createTreeByCode() {
 	TreeNode* p;
 
 	huffmanTree = createTreeNode(' ', nullptr, nullptr);
-	p = huffmanTree;
 	for (const auto i : huffmanCode) {
+		p = huffmanTree;
 		for (const auto j : i.second) {
 			if (j == '0') {
 				if (!p->left) {
