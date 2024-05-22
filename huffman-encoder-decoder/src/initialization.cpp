@@ -10,14 +10,6 @@ Status initialization() {
 	ofstream fout;
 	map<char, int> charset;
 
-	// 打开文件
-	fout.open("hfmTree", ios::out);
-	if (!fout) {
-		cerr << "发生错误：无法打开文件 hfmTree 。" << endl;
-		system("pause");
-		return ERROR;
-	}
-
 	// 读入字符集
 	system("cls");
 	cout << " - 初始化（Initialization） - " << endl;
@@ -41,13 +33,28 @@ Status initialization() {
 		return ERROR;
 	}
 
+	// 读取哈夫曼编码
+	map<char, string> *huffmanCode = getHuffmanCode();
+	if (!huffmanCode) {
+		cerr << "发生错误：无法读取哈夫曼编码。" << endl;
+		system("pause");
+		return ERROR;
+	}
+
+	// 打开文件
+	fout.open("hfmTree", ios::out);
+	if (!fout) {
+		cerr << "发生错误：无法打开文件 hfmTree 。" << endl;
+		system("pause");
+		return ERROR;
+	} 
+
 	// 写入文件
-	map<char, string> *code = getHuffmanCode();
-	for (const auto i : *code) {
+	for (const auto i : *huffmanCode) {
 		fout << i.first << " " << i.second << endl;
 	}
-	fout.close();
 	cout << "已将哈夫曼树存于文件 hfmTree 中。" << endl;
+	fout.close();
 	system("pause");
 	return OK;
 }
