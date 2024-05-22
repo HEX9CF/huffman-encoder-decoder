@@ -63,6 +63,7 @@ Status treePrint() {
 	}
 
 	// 遍历哈夫曼树
+	cout << "\n";
 	traverse(huffmanTree, 0, "");
 	cout << "\n" << "已将字符形式的哈夫曼树存于文件 TreePrint 中。" << endl;
 

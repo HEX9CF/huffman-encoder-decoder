@@ -67,9 +67,9 @@ Status readHuffmanCode() {
 	string s;
 	ifstream fin;
 
-	fin.open("hfmTree", ios::in);
+	fin.open("HfmTree", ios::in);
 	if (!fin) {
-		cerr << "发生错误：无法打开文件 hfmTree 。" << endl;
+		cerr << "发生错误：无法打开文件 HfmTree 。" << endl;
 		system("pause");
 		return ERROR;
 	}
