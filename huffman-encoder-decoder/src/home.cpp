@@ -8,8 +8,8 @@ Status home() {
 		cout << "i. 初始化（Initialization）" << endl;
 		cout << "e. 编码（Encoding）" << endl;
 		cout << "d. 译码（Decoding）" << endl;
-		cout << "p. 印代码文件（Print）" << endl;
-		cout << "t. 印哈夫曼树（Tree printing）" << endl;
+		cout << "p. 打印代码文件（Print）" << endl;
+		cout << "t. 打印哈夫曼树（Tree printing）" << endl;
 		cout << "q. 退出运行（Quit）" << endl;
 		cout << "请输入指令：";
 		cin >> op;

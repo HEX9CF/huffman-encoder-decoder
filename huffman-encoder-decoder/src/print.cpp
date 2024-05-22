@@ -12,7 +12,7 @@ Status print() {
 	ofstream fout;
 	
 	system("cls");
-	cout << " - 印代码文件（Print） - " << endl;
+	cout << " - 打印代码文件（Print） - " << endl;
 
 	// 打开文件
 	fin.open("CodeFile", ios::in);
@@ -41,7 +41,7 @@ Status print() {
 		}
 	} 
 
-	cout << "\n\n" << "印代码文件完成。" << endl;
+	cout << "\n\n" << "代码文件已存于文件 CodePrint 中。" << endl;
 	fin.close();
 	fout.close();
 	system("pause");

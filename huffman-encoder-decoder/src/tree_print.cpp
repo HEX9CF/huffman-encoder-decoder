@@ -44,7 +44,7 @@ void traverse(HuffmanTree T, int d, string c) {
 
 Status treePrint() {
 	system("cls");
-	cout << " - 印哈夫曼树（Tree printing） - " << endl;
+	cout << " - 打印哈夫曼树（Tree printing） - " << endl;
 
 	// 读取哈夫曼树
 	HuffmanTree huffmanTree = getHuffmanTree();
